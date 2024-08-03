@@ -13,11 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public CameraController cameraController;
 
     public Button RollButtons;
+    public GameObject Dice;
 
     public Animator anim;
+    public Animator diceAnimator;
 
     private bool _itsWalk;
     private bool _itsJump = false;
+
+    public int diceRoll;
 
     private void Start()
     {
@@ -30,7 +34,14 @@ public class PlayerMovement : MonoBehaviour
     }
     public void RollDice()
     {
-        int diceRoll = Random.Range(1, 7);
+        Dice.gameObject.SetActive(true);
+        diceRoll = Random.Range(1, 7);
+        diceAnimator.SetTrigger("Drop");
+        diceAnimator.SetTrigger("Roll_" + diceRoll);
+    }
+
+    public void MoversPlayer()
+    {
         RollButtons.gameObject.SetActive(false);
         _itsWalk = true;
         cameraController.StartZoomOut();
@@ -123,8 +134,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SmoothMoveToTile(int targetTileIndex)
     {
 
-        yield return new WaitForSeconds(1f);
         _itsJump = true;
+        yield return new WaitForSeconds(1f);
         Vector3 targetPosition = tiles[targetTileIndex].position;
 
         while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
@@ -156,8 +167,8 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator SmoothMoveToTilePen(int targetTileIndex)
     {
-        yield return new WaitForSeconds(1f); 
         _itsJump = true;
+        yield return new WaitForSeconds(1f); 
         Vector3 targetPosition = tiles[targetTileIndex].position;
 
         while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
