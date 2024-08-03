@@ -36,13 +36,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Dice.gameObject.SetActive(true);
         diceRoll = Random.Range(1, 7);
+        print(diceRoll);
+        RollButtons.gameObject.SetActive(false);
         diceAnimator.SetTrigger("Drop");
         diceAnimator.SetTrigger("Roll_" + diceRoll);
     }
 
     public void MoversPlayer()
     {
-        RollButtons.gameObject.SetActive(false);
         _itsWalk = true;
         cameraController.StartZoomOut();
         StartCoroutine(MovePlayer(diceRoll));
