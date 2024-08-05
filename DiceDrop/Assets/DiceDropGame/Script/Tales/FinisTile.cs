@@ -3,6 +3,9 @@ using UnityEngine;
 public class FinishTile : MonoBehaviour
 {
     private bool gameFinished = false;
+    public ParticleSystem Winner;
+    public GameObject WinnerLable;
+    public GameObject LoseLable;
 
   
 
@@ -14,18 +17,27 @@ public class FinishTile : MonoBehaviour
 
             if (collision.CompareTag("Player"))
             {
-                Debug.Log("Player wins!");
+                Winner.Play();
+                Invoke("PlayerWin", 2.3f);
                 // Здесь можно добавить дополнительные действия, такие как отображение UI победы
             }
             else if (collision.CompareTag("Opponent"))
             {
-                Debug.Log("Opponent wins!");
+                Invoke("EnemyWin", 2.3f);
                 // Здесь можно добавить дополнительные действия, такие как отображение UI победы
             }
 
             // Завершение игры
-            EndGame();
+            //EndGame();
         }
+    }
+    private void PlayerWin()
+    {
+        WinnerLable.SetActive(true);
+    }
+    private void EnemyWin()
+    {
+        LoseLable.SetActive(true);
     }
 
     private void EndGame()

@@ -58,11 +58,11 @@ AnimationClip:
       value: {fileID: -476268043, guid: fd8e04b725bc1aa46a3ddccbe21d30d5, type: 3}
     - time: 1.4166666
       value: {fileID: -1125994846, guid: fd8e04b725bc1aa46a3ddccbe21d30d5, type: 3}
-    - time: 1.4833333
+    - time: 1.5166667
       value: {fileID: 1141935697, guid: fd8e04b725bc1aa46a3ddccbe21d30d5, type: 3}
-    - time: 1.55
+    - time: 1.6333333
       value: {fileID: 1051902799, guid: fd8e04b725bc1aa46a3ddccbe21d30d5, type: 3}
-    - time: 1.6166667
+    - time: 1.7666667
       value: {fileID: -81419063, guid: fd8e04b725bc1aa46a3ddccbe21d30d5, type: 3}
     attribute: m_Sprite
     path: 
@@ -113,7 +113,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.9
+    m_StopTime: 2.0333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -133,7 +133,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.9
+  - time: 2.0333333
     functionName: OnDiceRollComplete
     data: 
     objectReferenceParameter: {fileID: 0}
