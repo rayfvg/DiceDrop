@@ -8,13 +8,14 @@ public class BuyWorld2 : MonoBehaviour
     public GameObject ClosedWorld2;
 
     public TMP_Text textMoneyCount;
+    public TMP_Text PriceForBuy;
 
     public int PriceForBuying = 10;
     private int _money;
 
     private void Start()
     {
-        _money = PlayerPrefs.GetInt("money");
+        PriceForBuy.text = PriceForBuying.ToString();
 
         if (PlayerPrefs.GetInt("World2") == 1)
         {
@@ -24,7 +25,8 @@ public class BuyWorld2 : MonoBehaviour
     }
     public void TryBuyWorld2()
     {
-        if(_money >= PriceForBuying)
+        _money = PlayerPrefs.GetInt("money");
+        if (_money >= PriceForBuying)
         {
             _money -= PriceForBuying;
             PlayerPrefs.SetInt("money", _money);
