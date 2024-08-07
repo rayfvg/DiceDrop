@@ -7,6 +7,8 @@ public class FinishTile : MonoBehaviour
     public GameObject WinnerLable;
     public GameObject LoseLable;
 
+    public AudioSource Winners;
+
   
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +20,7 @@ public class FinishTile : MonoBehaviour
             if (collision.CompareTag("Player"))
             {
                 Winner.Play();
+                Winners.Play();
                 Invoke("PlayerWin", 2.3f);
                 // Здесь можно добавить дополнительные действия, такие как отображение UI победы
             }

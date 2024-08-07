@@ -23,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
     public int diceRoll;
 
+    public AudioSource walk;
+    public AudioSource dice;
+
+    public AudioSource bon;
+    public AudioSource pen;
+
     private void Start()
     {
         RollButtons.gameObject.SetActive(true);
@@ -34,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void RollDice()
     {
+        dice.Play();
         Dice.gameObject.SetActive(true);
         diceRoll = Random.Range(1, 7);
         print(diceRoll);
@@ -45,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public void MoversPlayer()
     {
         _itsWalk = true;
+        walk.Play();
         cameraController.StartZoomOut();
         StartCoroutine(MovePlayer(diceRoll));
     }
@@ -63,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         _itsWalk = false;
+        walk.Pause();
         // ѕровер€ем, на какой клетке стоит игрок
         CheckCurrentTile();
         
@@ -137,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
         _itsJump = true;
         yield return new WaitForSeconds(1f);
+        bon.Play();
         Vector3 targetPosition = tiles[targetTileIndex].position;
 
         while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
@@ -169,7 +179,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SmoothMoveToTilePen(int targetTileIndex)
     {
         _itsJump = true;
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(1f);
+        pen.Play();
         Vector3 targetPosition = tiles[targetTileIndex].position;
 
         while (Vector2.Distance(transform.position, targetPosition) > 0.1f)

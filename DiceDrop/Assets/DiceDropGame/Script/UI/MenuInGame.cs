@@ -9,6 +9,8 @@ public class MenuInGame : MonoBehaviour
     public GameObject MenuUi;
     public GameObject ButtonUi;
 
+    public AudioSource Music;
+
 
     private void Start()
     {
@@ -33,5 +35,15 @@ public class MenuInGame : MonoBehaviour
     public void SceneInMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SetMusicEnamled(bool value)
+    {
+        Music.enabled = value;
+    }
+
+    public void SetVolume(float value)
+    {
+        AudioListener.volume = value;
     }
 }
