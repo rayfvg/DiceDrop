@@ -3,12 +3,16 @@ using UnityEngine;
 public class FinishTile : MonoBehaviour
 {
     private bool gameFinished = false;
+    public Wallet wallet;
+
     public ParticleSystem Winner;
     public GameObject WinnerLable;
     public GameObject LoseLable;
 
     public AudioSource Winners;
 
+
+    public CameraController cam;
   
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,14 +23,19 @@ public class FinishTile : MonoBehaviour
 
             if (collision.CompareTag("Player"))
             {
+                cam.OnReachFinish();
                 Winner.Play();
                 Winners.Play();
                 Invoke("PlayerWin", 2.3f);
+                EndGame();
                 // Здесь можно добавить дополнительные действия, такие как отображение UI победы
             }
             else if (collision.CompareTag("Opponent"))
             {
-                Invoke("EnemyWin", 2.3f);
+                cam.OnReachFinish();
+                Invoke("EnemyWin", 0.3f);
+                EndGame();
+
                 // Здесь можно добавить дополнительные действия, такие как отображение UI победы
             }
 
@@ -45,8 +54,7 @@ public class FinishTile : MonoBehaviour
 
     private void EndGame()
     {
-        // Логика завершения игры
-        // Например, можно остановить все движения, выключить управление и показать экран с результатами
-        Time.timeScale = 0f; // Остановка времени в игре
+        wallet.Money += wallet.CurrentMoney;
+        PlayerPrefs.SetInt("money", wallet.Money);
     }
 }

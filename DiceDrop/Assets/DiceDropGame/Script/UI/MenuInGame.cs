@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 public class MenuInGame : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class MenuInGame : MonoBehaviour
     public void SceneInMenu()
     {
         SceneManager.LoadScene(0);
+        YandexGame.FullscreenShow();
     }
 
     public void SetMusicEnamled(bool value)
@@ -46,4 +48,5 @@ public class MenuInGame : MonoBehaviour
     {
         AudioListener.volume = value;
     }
+   
 }

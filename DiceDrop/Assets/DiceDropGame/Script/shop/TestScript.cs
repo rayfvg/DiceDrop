@@ -16,9 +16,5 @@ public class TestScript : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    public void AddMyMany()
-    {
-        wallet.AddMoney(2);
-        textMoney.text = PlayerPrefs.GetInt("money").ToString();
-    }
+   
 }

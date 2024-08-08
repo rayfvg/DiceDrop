@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     private Transform currentTarget; // “екуща€ цель, на которую камера нацелена
     private bool isMoving = false;
 
+    private bool hasReachedFinish = false;
 
     void Start()
     {
@@ -24,7 +25,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        FollowTarget();
+        if (!hasReachedFinish)
+            FollowTarget();
     }
 
     void FollowTarget()
@@ -78,5 +80,10 @@ public class CameraController : MonoBehaviour
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoomInSize, zoomSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void OnReachFinish()
+    {
+        hasReachedFinish = true;
     }
 }

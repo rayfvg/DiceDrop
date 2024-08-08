@@ -11,7 +11,7 @@ public class TurnManager : MonoBehaviour
     public Button RollButtons; 
     public CameraController CameraControllers;
 
-    private bool isPlayerTurn = true; // ѕеременна€, определ€юща€, чей сейчас ход
+    public bool isPlayerTurn = true; // ѕеременна€, определ€юща€, чей сейчас ход
 
     // ‘ункци€ дл€ начала хода игрока
     public void StartPlayerTurn()

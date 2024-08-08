@@ -9,7 +9,7 @@ public class MoneyTile : MonoBehaviour
     {
         if (collision.TryGetComponent<Wallet>(out Wallet wallet))
         {
-            wallet.AddMoney(1);
+            wallet.AddCurrentMoney();
             partical.Play();
             TakeCoin.Play();
             Destroy(gameObject, 0.3f);
